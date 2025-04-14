@@ -6,7 +6,13 @@ import express from "express"
 const app = express()
 
 connect_DB()
-.then().catch((err)=>{})
+.then(()=>{
+  app.listen(process.env.PORT || 8000,() =>{
+    console.log(`Server is running on port${process.env.PORT}`)
+  })
+}).catch((err)=>{
+  console.log("MONGO db connection is failed!!!",err);
+})
 
 
 
